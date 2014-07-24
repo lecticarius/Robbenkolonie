@@ -3,7 +3,7 @@ package de.tu_darmstadt.gdi1.pacman.tests;
 import java.awt.Point;
 
 import de.tu_darmstadt.gdi1.pacman.exceptions.InvalidLevelCharacterException;
-import de.tu_darmstadt.gdi1.pacman.exceptions.InvalidLevelFormException;
+import de.tu_darmstadt.gdi1.pacman.exceptions.InvalidLevelFormatException;
 import de.tu_darmstadt.gdi1.pacman.exceptions.NoGhostSpawnPointException;
 import de.tu_darmstadt.gdi1.pacman.exceptions.NoItemsException;
 import de.tu_darmstadt.gdi1.pacman.exceptions.NoPacmanSpawnPointException;
@@ -27,14 +27,22 @@ public interface PacmanTestInterfaceMinimal {
    * @param content
    *          Textdarstellung des Levels
    * @throws InvalidLevelCharacterException
+<<<<<<< HEAD
    * @throws InvalidLevelFormException
+=======
+   * @throws InvalidLevelFormatException
+>>>>>>> 4d48891f8b776a9a47aec05bcdad408259c8c7d2
    * @throws NoPacmanSpawnPointException
    * @throws ReachabilityException
    * @throws NoGhostSpawnPointException
    * @throws NoItemsException
    */
   public void levelIsValidWithException(String content)
+<<<<<<< HEAD
       throws InvalidLevelCharacterException, InvalidLevelFormException,
+=======
+      throws InvalidLevelCharacterException, InvalidLevelFormatException,
+>>>>>>> 4d48891f8b776a9a47aec05bcdad408259c8c7d2
       NoPacmanSpawnPointException, ReachabilityException,
       NoGhostSpawnPointException, NoItemsException;
 
