@@ -30,7 +30,7 @@ public class Main
 		String osName = System.getProperty("os.name").toLowerCase();
     	// Setze den library Pfad abhaengig vom Betriebssystem
     	if (osName.contains("windows")) {
-    		System.setProperty("org.lwjgl.librarypath",System.getProperty("user.dir") + "\\lib\\lwjgl-2.9.0\\native\\windows");
+    		System.setProperty("org.lwjgl.librarypath",System.getProperty("user.dir") + "/lib/lwjgl-2.9.0/native/windows");
     	} else if (osName.equals("mac os x")) {
     		System.setProperty("org.lwjgl.librarypath", System.getProperty("user.dir") + "/lib/lwjgl-2.9.0/native/macosx");
     	} else {
