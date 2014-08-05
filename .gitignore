@@ -1,4 +1,5 @@
 bin
 *.class
 *.zip
+.classpath
 .DS_Store
