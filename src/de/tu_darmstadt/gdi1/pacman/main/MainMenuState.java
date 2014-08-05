@@ -1,7 +1,5 @@
 package de.tu_darmstadt.gdi1.pacman.main;
 
-
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -10,6 +8,7 @@ import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import de.tu_darmstadt.gdi1.pacman.view.Pacman;
 import eea.engine.action.Action;
 import eea.engine.action.basicactions.ChangeStateInitAction;
 import eea.engine.action.basicactions.QuitAction;
@@ -27,7 +26,7 @@ import eea.engine.event.basicevents.MouseEnteredEvent;
  * Spiel gestartet werden kann und das gesamte Spiel beendet 
  * werden kann.
  */
-public class MainMenuStates extends BasicGameState {
+public class MainMenuState extends BasicGameState {
 
 	private int stateID; 							// Identifier von diesem BasicGameState
 	private StateBasedEntityManager entityManager; 	// zugehoeriger entityManager
@@ -35,7 +34,7 @@ public class MainMenuStates extends BasicGameState {
 	private final int distance = 100;
     private final int start_Position = 180;
     
-    MainMenuStates( int sid ) {
+    public MainMenuState( int sid ) {
        stateID = sid;
        entityManager = StateBasedEntityManager.getInstance();
     }
@@ -45,11 +44,12 @@ public class MainMenuStates extends BasicGameState {
      */
     @Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
-    	System.out.println("main menu state init");
+    	System.out.println("main menu init");
+    	
     	// Hintergrund laden
-    	Entity background = new Entity("menu");	// Entitaet fuer Hintergrund
+    	Entity background = new Entity("KorsikaPalombaggiaStrand");	// Entitaet fuer Hintergrund
     	background.setPosition(new Vector2f(400,300));	// Startposition des Hintergrunds
-    	background.addComponent(new ImageRenderComponent(new Image("/res/pictures/theme1/Menu/KorsikaPalombaggiaStrand.jpg"))); // Bildkomponente
+    	//background.addComponent(new ImageRenderComponent(new Image("/res/pictures/theme1/Menu/KorsikaPalombaggiaStrand.jpg"))); // Bildkomponente
     	    	
     	// Hintergrund-Entitaet an StateBasedEntityManager uebergeben
     	entityManager.addEntity(stateID, background);
@@ -61,11 +61,11 @@ public class MainMenuStates extends BasicGameState {
     	// Setze Position und Bildkomponente
     	new_Game_Entity.setPosition(new Vector2f(218, 190));
     	new_Game_Entity.setScale(0.28f);
-    	new_Game_Entity.addComponent(new ImageRenderComponent(new Image("/res/pictures/theme1/Menu/entry.png")));
+    	//new_Game_Entity.addComponent(new ImageRenderComponent(new Image("/res/pictures/theme1/Menu/entry.png")));
     	
     	// Erstelle das Ausloese-Event und die zugehoerige Action
     	ANDEvent mainEvents = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());
-    	Action new_Game_Action = new ChangeStateInitAction(Main.GAMEPLAY_STATE);
+    	Action new_Game_Action = new ChangeStateInitAction(Pacman.GAMEPLAY_STATE);
     	mainEvents.addAction(new_Game_Action);
     	new_Game_Entity.addComponent(mainEvents);
     	
@@ -78,7 +78,7 @@ public class MainMenuStates extends BasicGameState {
     	// Setze Position und Bildkomponente
     	quit_Entity.setPosition(new Vector2f(218, 290));
     	quit_Entity.setScale(0.28f);
-    	quit_Entity.addComponent(new ImageRenderComponent(new Image("/res/pictures/theme1/Menu/entry.png")));
+    	//quit_Entity.addComponent(new ImageRenderComponent(new Image("/res/pictures/theme1/Menu/entry.png")));
     	
     	// Erstelle das Ausloese-Event und die zugehoerige Action
     	ANDEvent mainEvents_q = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());
@@ -108,10 +108,10 @@ public class MainMenuStates extends BasicGameState {
 												Graphics g) throws SlickException {
 		entityManager.renderEntities(container, game, g);
 		
-		int counter = 0;
-		
-		g.drawString("Neues Spiel", 110, start_Position+counter*distance); counter++;
-		g.drawString("Beenden", 110, start_Position+counter*distance); counter++;
+//		int counter = 0;
+//		
+//		g.drawString("Neues Spiel", 110, start_Position+counter*distance); counter++;
+//		g.drawString("Beenden", 110, start_Position+counter*distance); counter++;
 	}
 
 	@Override
