@@ -37,4 +37,4 @@ public class Pacman extends StateBasedGame
         StateBasedEntityManager.getInstance().addState(GAMEPLAY_STATE);
 		
 	}
-}
+}//bug, wird bei mir als editiert angezeigt obwohl nichts geändert

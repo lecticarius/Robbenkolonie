@@ -40,4 +40,4 @@ public class Main
 		System.err.println(System.getProperty("org.lwjgl.librarypath"));
         System.err.println(System.getProperty("java.library.path"));
 	}
-}
+}//bug, wird bei mir als editiert angezeigt obwohl nichts geändert
