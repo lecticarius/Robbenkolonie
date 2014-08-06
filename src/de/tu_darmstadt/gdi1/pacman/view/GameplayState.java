@@ -23,8 +23,7 @@ import eea.engine.event.basicevents.KeyPressedEvent;
 /**
  * @author
  * 
- *         Diese Klasse repraesentiert das Spielfenster, indem ein Wassertropfen
- *         erscheint und nach unten faellt.
+ *         Diese Klasse repraesentiert das Spielfenster eines pacmans
  * 
  */
 public class GameplayState extends BasicGameState {
@@ -32,6 +31,8 @@ public class GameplayState extends BasicGameState {
 	public static Input in; // variable für die key events
 	public static int x; // repräsentiert die position auf der x achse
 	public static int y; // repräsentiert die position auf der y achse
+	public static int x1;
+	public static int y1;
 	public Image playerImg; // stellt das pacman ding da
 	public Image lab;
 	protected int stateID; // stellt ein state da
@@ -65,10 +66,10 @@ public class GameplayState extends BasicGameState {
 
 		// Bei Drücken der ESC-Taste zurueck ins Hauptmenue wechseln
 		Entity esc_Listener = new Entity("ESC_Listener");
-		
+
 		KeyPressedEvent esc_pressed = new KeyPressedEvent(Input.KEY_ESCAPE);
 		esc_pressed.addAction(new ChangeStateAction(Pacman.MAINMENU_STATE));
-		
+
 		esc_Listener.addComponent(esc_pressed);
 		entityManager.addEntity(stateID, esc_Listener);
 
@@ -77,6 +78,8 @@ public class GameplayState extends BasicGameState {
 		// startpunkte des Pacmans
 		x = 10;
 		y = 10;
+		x1 = 0;
+		y1 = 0;
 		// bild des pacmans
 		playerImg = new Image("/res/pictures/menu/Pacman.jpg");
 		lab = new Image("/res/pictures/menu/X0.png");
@@ -89,9 +92,9 @@ public class GameplayState extends BasicGameState {
 			throws SlickException {
 
 		// Keyevents werden hier aufgeführt
-		
+
 		entityManager.updateEntities(container, game, delta);
-		
+
 		if (in.isKeyDown(Input.KEY_UP) || in.isKeyDown(Input.KEY_W)) {
 			playerImg = new Image("/res/pictures/menu/Pacman2.jpg");
 			y -= 3;
@@ -108,6 +111,14 @@ public class GameplayState extends BasicGameState {
 			playerImg = new Image("/res/pictures/menu/Pacman.jpg");
 			x += 3;
 		}
+		
+		// die weltabgrenzung
+		if (x < 0)   x = 0;
+		if (y < 0)   y = 0;
+		if (x >= 770) x = 770;//sehr unsaubere lösung
+		if (y >= 570) y = 570;// sehr unsaubere lösung
+		
+
 	}
 
 	/**
@@ -117,14 +128,12 @@ public class GameplayState extends BasicGameState {
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {
 
-		Reader reader=null;
-		int x1 = 100*4;
-		int y1 = 100*4;
+		Reader reader = null;
 		try {
 			reader = new FileReader("res/levels/Minimal.txt");
 			for (int c; (c = reader.read()) != (1 * -1);) {
-				x1 = x1 - 30;
-				y1 = y1 - 30;
+				x1 = x1 + 30;
+				y1 = y1 + 30;
 				if (c == 'X')
 					g.drawImage(lab, x1, y1);
 			}
