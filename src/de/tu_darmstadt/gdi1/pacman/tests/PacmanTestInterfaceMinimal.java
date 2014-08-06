@@ -27,14 +27,22 @@ public interface PacmanTestInterfaceMinimal {
    * @param content
    *          Textdarstellung des Levels
    * @throws InvalidLevelCharacterException
+<<<<<<< HEAD
+   * @throws InvalidLevelFormException
+=======
    * @throws InvalidLevelFormatException
+>>>>>>> 4d48891f8b776a9a47aec05bcdad408259c8c7d2
    * @throws NoPacmanSpawnPointException
    * @throws ReachabilityException
    * @throws NoGhostSpawnPointException
    * @throws NoItemsException
    */
   public void levelIsValidWithException(String content)
+<<<<<<< HEAD
+      throws InvalidLevelCharacterException, InvalidLevelFormException,
+=======
       throws InvalidLevelCharacterException, InvalidLevelFormatException,
+>>>>>>> 4d48891f8b776a9a47aec05bcdad408259c8c7d2
       NoPacmanSpawnPointException, ReachabilityException,
       NoGhostSpawnPointException, NoItemsException;
 
