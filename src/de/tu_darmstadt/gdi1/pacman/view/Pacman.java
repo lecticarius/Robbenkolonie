@@ -4,8 +4,6 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import de.tu_darmstadt.gdi1.pacman.main.GamePlayState;
-import de.tu_darmstadt.gdi1.pacman.main.MainMenuState;
 import eea.engine.entity.StateBasedEntityManager;
 
 /**
@@ -30,7 +28,7 @@ public class Pacman extends StateBasedGame
 		// Fuege dem StateBasedGame die States hinzu 
 		// (der zuerst hinzugefuegte State wird als erster State gestartet)
 		addState(new MainMenuState(MAINMENU_STATE));
-        addState(new GamePlayState(GAMEPLAY_STATE));
+        addState(new GameplayState(GAMEPLAY_STATE));
         
         // Fuege dem StateBasedEntityManager die States hinzu
         StateBasedEntityManager.getInstance().addState(MAINMENU_STATE);
