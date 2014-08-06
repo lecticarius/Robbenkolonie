@@ -7,8 +7,10 @@ import de.tu_darmstadt.gdi1.pacman.view.Pacman;
 
 public class Main
 {
-	public static void main(String[] args) throws SlickException
-	{
+	
+	
+    public static void main(String[] args) throws SlickException
+	{	 
 		// standardpfade initialisieren
 		setPaths();
 
@@ -25,14 +27,17 @@ public class Main
 
 	private static void setPaths()
 	{
-		if (System.getProperty("os.name").toLowerCase().contains("windows"))
-			System.setProperty("org.lwjgl.librarypath",
-			System.getProperty("user.dir") + "/native/windows");
-		else if (System.getProperty("os.name").toLowerCase().contains("mac"))
-			System.setProperty("org.lwjgl.librarypath",
-			System.getProperty("user.dir") + "/native/macosx");
-		else
-			System.setProperty("org.lwjgl.librarypath",
-			System.getProperty("user.dir") + "/native/" + System.getProperty("os.name").toLowerCase());
+		String osName = System.getProperty("os.name").toLowerCase();
+    	// Setze den library Pfad abhaengig vom Betriebssystem
+    	if (osName.contains("windows")) {
+    		System.setProperty("org.lwjgl.librarypath",System.getProperty("user.dir") + "/lib/lwjgl-2.9.0/native/windows");
+    	} else if (osName.equals("mac os x")) {
+    		System.setProperty("org.lwjgl.librarypath", System.getProperty("user.dir") + "/lib/lwjgl-2.9.0/native/macosx");
+    	} else {
+    		System.setProperty("org.lwjgl.librarypath", System.getProperty("user.dir") + "/lib/lwjgl-2.9.0/native/" +System.getProperty("os.name").toLowerCase() +'"');
+    	}
+		
+		System.err.println(System.getProperty("org.lwjgl.librarypath"));
+        System.err.println(System.getProperty("java.library.path"));
 	}
 }
