@@ -19,7 +19,7 @@ public class Main
 		AppGameContainer app = new AppGameContainer(game);
 
 		// konfiguration festlegen
-		app.setDisplayMode(800, 600, true);
+		app.setDisplayMode(1000, 800, false);
 		app.setShowFPS(false);
 		app.setTargetFrameRate(60);
 		app.start();
