@@ -1,10 +1,5 @@
 package de.tu_darmstadt.gdi1.pacman.view;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -31,10 +26,8 @@ import de.tu_darmstadt.gdi1.pacman.eea.*;
 public class GameplayState extends BasicGameState {
 
 	public static Input in; // variable für die key events
-	public static int ex1; // repräsentiert die position auf der x achse
-	public static int ey1; // repräsentiert die position auf der y achse
-	public Pacman1 p;		//pacmanobjekt
-	public Image enemyImg1; // stellt den gegner da
+	public Geist1 g; // geistobjekt
+	public Pacman1 p; // pacmanobjekt
 	protected int stateID; // stellt ein state da
 	protected StateBasedEntityManager entityManager; // nimmt die entitäten auf
 
@@ -49,9 +42,13 @@ public class GameplayState extends BasicGameState {
 	 */
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
+
 		// Entities erzeugen
 
 		p = new Pacman1("/res/pictures/menu/Pacman.jpg", 10, 10);
+		g = new Geist1("/res/pictures/theme1/entities/G1.png",
+				(int) ((Math.random()) * 801 + 0),
+				(int) ((Math.random()) * 601 + 0));
 
 		// Hintergrund laden
 
@@ -78,15 +75,6 @@ public class GameplayState extends BasicGameState {
 
 		// nötig für die Keyevents
 		in = container.getInput();
-		// startpunkte des Pacmans
-		// px = 10;
-		// py = 10;
-
-		ex1 = (int) ((Math.random()) * 801 + 0);
-		ey1 = (int) ((Math.random()) * 601 + 0);
-		// bild des pacmans
-		// playerImg = new Image("/res/pictures/menu/Pacman.jpg");
-		enemyImg1 = new Image("/res/pictures/theme1/entities/G1.png");
 
 	}
 
@@ -96,63 +84,15 @@ public class GameplayState extends BasicGameState {
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
 
-		// Keyevents werden hier aufgeführt
-
 		entityManager.updateEntities(container, game, delta);
 
-		if (in.isKeyDown(Input.KEY_UP)) {
-			p.setY(p.getY() - 3);
-			p.setEntityImg("/res/pictures/menu/Pacman2.jpg");
-			
-		} else {
+		p.pacmanInput(p, in); // Keyevents des Pacmans
 
-			if (in.isKeyDown(Input.KEY_DOWN)) {
-				p.setY(p.getY() + 3);
-				p.setEntityImg("/res/pictures/menu/Pacman1.jpg");
-			} else {
-				if (in.isKeyDown(Input.KEY_LEFT)) {
-					p.setX(p.getX() - 3);
-					p.setEntityImg("/res/pictures/menu/Pacman3.jpg");;
-				} else {
-					if (in.isKeyDown(Input.KEY_RIGHT)) {
-						p.setX(p.getX() + 3);
-						p.setEntityImg("/res/pictures/menu/Pacman.jpg");
-					}
-				}
-			}
-		}
+		p.pacmanKiste(p); // die weltabgrenzung für das pacman ding
+		g.geistKiste(g); // die weltabgrenzung für die feinde
+	}
 
-		// for (int w = 0; w < 800; w++) {
-		// for (int y = 0; y < 600; y++) {
-		// ex1 = ex1 + w;
-		// ey1 = ey1 + y;
-		// }
-		// }
-
-		// die weltabgrenzung
-//		if (px < 0)
-//			px = 0;
-//		if (py < 0)
-//			py = 0;
-//		if (px >= 770)
-//			px = 770;// sehr unsaubere lösung
-//		if (py >= 570)
-//			py = 570;// sehr unsaubere lösung
-
-		if (ex1 < 0)
-			ex1 = 0;
-		if (ey1 < 0)
-			ey1 = 0;
-		if (ex1 >= 770)
-			ex1 = 770;// sehr unsaubere lösung
-		if (ey1 >= 570)
-			ey1 = 570;// sehr unsaubere lösung
-
-//		if (py == ey1 + 10 || px == ex1 + 10) {
-//			px = 0;
-//			py = 0;
-		}
-//	}
+	// }
 
 	/**
 	 * Wird mit dem Frame ausgefuehrt
@@ -166,7 +106,7 @@ public class GameplayState extends BasicGameState {
 
 		// pacman wird an den X und Y koordianten gespawnt und gezeichnet
 		g.drawImage(p.getPlayerImg(), p.getX(), p.getY());
-		g.drawImage(enemyImg1, ex1, ey1);
+		g.drawImage(g.getPlayerImg(), g.getX(), g.getY());
 	}
 
 	@Override
