@@ -45,5 +45,4 @@ public class Pacman1 extends Entity {
 			}
 		}
 	}
-
 }

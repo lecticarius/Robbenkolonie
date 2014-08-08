@@ -26,7 +26,7 @@ import de.tu_darmstadt.gdi1.pacman.eea.*;
 public class GameplayState extends BasicGameState {
 
 	public static Input in; // variable für die key events
-	public Geist1 geist;
+	public Geist1 geist; // geistobjekt
 	public Pacman1 p; // pacmanobjekt
 	protected int stateID; // stellt ein state da
 	protected StateBasedEntityManager entityManager; // nimmt die entitäten auf
@@ -49,6 +49,8 @@ public class GameplayState extends BasicGameState {
 		geist = new Geist1("/res/pictures/theme1/entities/G2.png",
 				(int) ((Math.random()) * 801 + 0),
 				(int) ((Math.random()) * 601 + 0));
+		
+		
 		// Hintergrund laden
 
 		Entity background = new Entity("background"); // Entitaet fuer
@@ -82,6 +84,8 @@ public class GameplayState extends BasicGameState {
 	 */
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
+		
+		Event e = new Event();
 
 		entityManager.updateEntities(container, game, delta);
 
@@ -89,6 +93,8 @@ public class GameplayState extends BasicGameState {
 
 		p.pacmanKiste(p); // die weltabgrenzung für das pacman ding
 		geist.geistKiste(geist); // die weltabgrenzung für doe feinde
+		e.kollision(p, geist);
+		
 	}
 
 	// }
