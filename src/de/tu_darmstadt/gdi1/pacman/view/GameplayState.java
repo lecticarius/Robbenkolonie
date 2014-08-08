@@ -144,7 +144,7 @@ public class GameplayState extends BasicGameState {
 		if (ey1 >= 570)
 			ey1 = 570;// sehr unsaubere lösung
 
-		if (py == ey1 + 10 || px == ex1 + 10) {
+		if (py == ey1 + 10 && px == ex1 + 10) {
 			px = 0;
 			py = 0;
 		}
