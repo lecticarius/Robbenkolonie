@@ -26,7 +26,7 @@ import de.tu_darmstadt.gdi1.pacman.eea.*;
 public class GameplayState extends BasicGameState {
 
 	public static Input in; // variable für die key events
-	public Geist1 g; // geistobjekt
+	public Geist1 geist;
 	public Pacman1 p; // pacmanobjekt
 	protected int stateID; // stellt ein state da
 	protected StateBasedEntityManager entityManager; // nimmt die entitäten auf
@@ -46,10 +46,9 @@ public class GameplayState extends BasicGameState {
 		// Entities erzeugen
 
 		p = new Pacman1("/res/pictures/menu/Pacman.jpg", 10, 10);
-		g = new Geist1("/res/pictures/theme1/entities/G1.png",
+		geist = new Geist1("/res/pictures/theme1/entities/G2.png",
 				(int) ((Math.random()) * 801 + 0),
 				(int) ((Math.random()) * 601 + 0));
-
 		// Hintergrund laden
 
 		Entity background = new Entity("background"); // Entitaet fuer
@@ -89,7 +88,7 @@ public class GameplayState extends BasicGameState {
 		p.pacmanInput(p, in); // Keyevents des Pacmans
 
 		p.pacmanKiste(p); // die weltabgrenzung für das pacman ding
-		g.geistKiste(g); // die weltabgrenzung für die feinde
+		geist.geistKiste(geist); // die weltabgrenzung für doe feinde
 	}
 
 	// }
@@ -104,9 +103,11 @@ public class GameplayState extends BasicGameState {
 		// StatedBasedEntityManager soll alle Entities rendern
 		entityManager.renderEntities(container, game, g);
 
-		// pacman wird an den X und Y koordianten gespawnt und gezeichnet
+		// pacman wird an den X und Y koordinaten gezeichnet
 		g.drawImage(p.getPlayerImg(), p.getX(), p.getY());
-		g.drawImage(g.getPlayerImg(), g.getX(), g.getY());
+
+		// geist wird an den X und Y koordinaten gezeichnet
+		g.drawImage(geist.getPlayerImg(), geist.getX(), geist.getY());
 	}
 
 	@Override
