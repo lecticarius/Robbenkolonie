@@ -9,16 +9,6 @@ public class Pacman1 extends Entity {
 		super(entityImg, x, y);
 	}
 
-	public static void pacmanKiste(Pacman1 p) {
-		if (p.getX() < 0)
-			p.setX(0);
-		if (p.getY() < 0)
-			p.setY(0);
-		if (p.getX() >= 770)
-			p.setX(770); // sehr unsaubere lösung
-		if (p.getY() >= 570)
-			p.setY(570); // sehr unsaubere lösung
-	}
 
 	public static void pacmanInput(Pacman1 p, Input in) {
 
