@@ -22,6 +22,18 @@ public abstract class Entity {
 		}
 
 	}
+	
+	public static void weltabgrenzung(Entity e){
+		if (e.getX() < 0)
+			e.setX(0);
+		if (e.getY() < 0)
+			e.setY(0);
+		if (e.getX() >= 770)
+			e.setX(770); // sehr unsaubere lösung
+		if (e.getY() >= 570)
+			e.setY(570); // sehr unsaubere lösung
+		
+	}
 
 	public int getX() {
 		return x;

@@ -3,18 +3,21 @@ package de.tu_darmstadt.gdi1.pacman.view;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import eea.engine.action.Action;
+import eea.engine.action.basicactions.ChangeStateAction;
 import eea.engine.action.basicactions.ChangeStateInitAction;
 import eea.engine.action.basicactions.QuitAction;
 import eea.engine.component.render.ImageRenderComponent;
 import eea.engine.entity.Entity;
 import eea.engine.entity.StateBasedEntityManager;
 import eea.engine.event.ANDEvent;
+import eea.engine.event.basicevents.KeyPressedEvent;
 import eea.engine.event.basicevents.MouseClickedEvent;
 import eea.engine.event.basicevents.MouseEnteredEvent;
 
@@ -45,19 +48,29 @@ public class HighscoreState extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
 
-		//Entität für Hintergrund
-		Entity background = new Entity("highscore");//Entität für den Hintergrund
-		
-		//Startposition des Hintergrunds
-		background.setPosition(new Vector2f(400,300));
-		
-		//Bildkomponente zur Entität hinzufügen  
-		background.addComponent(new ImageRenderComponent(new Image("/res/pictures/menu/Highscore.png")));
-		
-		//Hintergrund-Entität an StateBasedEntityManager übergeben
+		// Entität für Hintergrund
+		Entity background = new Entity("highscore");// Entität für den
+													// Hintergrund
+
+		// Startposition des Hintergrunds
+		background.setPosition(new Vector2f(400, 300));
+
+		// Bildkomponente zur Entität hinzufügen
+		background.addComponent(new ImageRenderComponent(new Image(
+				"/res/pictures/menu/Highscore.png")));
+
+		// Bei Drücken der ESC-Taste zurueck ins Hauptmenue wechseln
+		Entity esc_Listener = new Entity("ESC_Listener");
+
+		KeyPressedEvent esc_pressed = new KeyPressedEvent(Input.KEY_ESCAPE);
+		esc_pressed.addAction(new ChangeStateAction(Pacman.MAINMENU_STATE));
+
+		esc_Listener.addComponent(esc_pressed);
+		entityManager.addEntity(stateID, esc_Listener);
+
+		// Hintergrund-Entität an StateBasedEntityManager übergeben
 		entityManager.addEntity(stateID, background);
-		
-		
+
 	}
 
 	/**
