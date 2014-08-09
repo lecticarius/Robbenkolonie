@@ -29,8 +29,8 @@ public class MainMenuState extends BasicGameState {
 	private int stateID; // Identifier von diesem BasicGameState
 	private StateBasedEntityManager entityManager; // zugehoeriger entityManager
 
-	private final int abstand = 70; // abstand zwischen "neues spiel" und "beenden"
-	private final int start_Position = 385; // der punkt an denen die Buttons erscheinen sollen
+	private final int abstand = 65; // abstand zwischen "neues spiel" und "beenden"
+	private final int start_Position = 360; // der punkt an denen die Buttons erscheinen sollen
 	
 	//hauptmenü state
 	MainMenuState(int sid) {
@@ -60,7 +60,7 @@ public class MainMenuState extends BasicGameState {
 		Entity new_Game_Entity = new Entity(new_Game);
 
 		// Setze Position und Bildkomponente
-		new_Game_Entity.setPosition(new Vector2f(400, 395));
+		new_Game_Entity.setPosition(new Vector2f(400, 370));
 		new_Game_Entity.setScale(0.98f);
 		new_Game_Entity.addComponent(new ImageRenderComponent(new Image(
 				"/res/pictures/menu/symbolmenu.jpg")));
@@ -76,11 +76,30 @@ public class MainMenuState extends BasicGameState {
 		// Fuege die Entity zum StateBasedEntityManager hinzu
 		entityManager.addEntity(this.stateID, new_Game_Entity);
 
+		/* Highscore Button Entität */
+		Entity highscore_Entity = new Entity("Highscore");
+		
+		//Setze Position und Bildkomponente
+		highscore_Entity.setPosition(new Vector2f(400, 370 + abstand));
+		highscore_Entity.setScale(0.98f);
+		highscore_Entity.addComponent(new ImageRenderComponent(new Image ("/res/pictures/menu/symbolmenu.jpg")));
+		
+		//Erstellen des Ausloese-Events und die zugehoerige Action
+		ANDEvent mainEvents_h = new ANDEvent(new MouseEnteredEvent(), new MouseClickedEvent());
+		Action enter_Highscore = new ChangeStateInitAction(Pacman.HIGHSCORE_STATE);
+		mainEvents_h.addAction(enter_Highscore);
+		highscore_Entity.addComponent(mainEvents_h);
+		
+		// Fuege die Entity zum StateBasedEntityManager hinzu
+		entityManager.addEntity(this.stateID, highscore_Entity);
+		
+		
 		/* Beenden-Entitaet */
 		Entity quit_Entity = new Entity("Beenden");
+		
 
 		// Setze Position und Bildkomponente
-		quit_Entity.setPosition(new Vector2f(400, 465));
+		quit_Entity.setPosition(new Vector2f(400, 370 + abstand *2));
 		quit_Entity.setScale(0.98f);
 		quit_Entity.addComponent(new ImageRenderComponent(new Image(
 				"/res/pictures/menu/symbolmenu.jpg")));
@@ -115,6 +134,8 @@ public class MainMenuState extends BasicGameState {
 		int counter = 0;
 
 		g.drawString("Neues Spiel", 350, start_Position + counter * abstand);
+		counter++;
+		g.drawString("Highscore", 350, start_Position + counter * abstand);
 		counter++;
 		g.drawString("Beenden", 350, start_Position + counter * abstand);
 		counter++;

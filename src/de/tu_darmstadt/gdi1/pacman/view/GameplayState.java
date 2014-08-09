@@ -91,8 +91,8 @@ public class GameplayState extends BasicGameState {
 
 		p.pacmanInput(p, in); // Keyevents des Pacmans
 
-		p.pacmanKiste(p); // die weltabgrenzung für das pacman ding
-		geist.geistKiste(geist); // die weltabgrenzung für doe feinde
+		p.weltabgrenzung(p); // die weltabgrenzung für das pacman ding
+		geist.weltabgrenzung(geist); // die weltabgrenzung für doe feinde
 		e.kollision(p, geist);
 		
 	}
