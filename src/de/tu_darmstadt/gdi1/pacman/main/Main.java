@@ -18,9 +18,9 @@ public class Main
 		Pacman game = new Pacman();
 		AppGameContainer app = new AppGameContainer(game);
 
-		// konfiguration festlegen
+		// konfiguration festlegen, falls Vollbild benötigt -> app.setDisplayMode(int1,int2,true) ändern
 		app.setDisplayMode(800, 600, false);
-		app.setShowFPS(false);
+		app.setShowFPS(false);// FPS anzeigen ;)
 		app.setTargetFrameRate(60);
 		app.start();
 	}

@@ -76,11 +76,21 @@ public class MainMenuState extends BasicGameState {
 		// Fuege die Entity zum StateBasedEntityManager hinzu
 		entityManager.addEntity(this.stateID, new_Game_Entity);
 
+		/* Highscore Button Entität */
+		Entity highscore_Entity = new Entity("Highscore");
+		
+		//Setze Position und Bildkomponente
+		highscore_Entity.setPosition(new Vector2f(400, 445));
+		highscore_Entity.setScale(0.98f);
+		highscore_Entity.addComponent(new ImageRenderComponent(new Image ("/res/pictures/menu/symbolmenu.jpg")));
+		
+		
 		/* Beenden-Entitaet */
 		Entity quit_Entity = new Entity("Beenden");
+		
 
 		// Setze Position und Bildkomponente
-		quit_Entity.setPosition(new Vector2f(400, 465));
+		quit_Entity.setPosition(new Vector2f(400, 495));
 		quit_Entity.setScale(0.98f);
 		quit_Entity.addComponent(new ImageRenderComponent(new Image(
 				"/res/pictures/menu/symbolmenu.jpg")));
