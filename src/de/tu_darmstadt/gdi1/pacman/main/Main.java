@@ -19,9 +19,9 @@ public class Main {
 		AppGameContainer app = new AppGameContainer(game);
 
 		// konfiguration festlegen
-		LibraryFileReader reader = new LibraryFileReader("src\\Karte.txt");
-		ArrayList<char[]> karte = reader.readFile();
-
+		LibraryFileReader reader = new LibraryFileReader("res\\levels\\Minimal.txt");
+		char[][] result_map = reader.get_map();		
+		
 		// konfiguration festlegen, falls Vollbild benötigt ->
 		// app.setDisplayMode(int1,int2,true) ändern
 		app.setDisplayMode(800, 600, false);
