@@ -42,7 +42,6 @@ public class HighscoreState extends BasicGameState {
 	/**
 	 * Wird vor dem (erstmaligen) Starten dieses State's ausgefuehrt
 	 */
-	@Override
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
 
@@ -64,7 +63,6 @@ public class HighscoreState extends BasicGameState {
 	/**
 	 * Wird vor dem Frame ausgefuehrt
 	 */
-	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
 

@@ -29,8 +29,8 @@ public class MainMenuState extends BasicGameState {
 	private int stateID; // Identifier von diesem BasicGameState
 	private StateBasedEntityManager entityManager; // zugehoeriger entityManager
 
-	private final int abstand = 60; // abstand zwischen "neues spiel" und "beenden"
-	private final int start_Position = 385; // der punkt an denen die Buttons erscheinen sollen
+	private final int abstand = 65; // abstand zwischen "neues spiel" und "beenden"
+	private final int start_Position = 360; // der punkt an denen die Buttons erscheinen sollen
 	
 	//hauptmenü state
 	MainMenuState(int sid) {
@@ -60,7 +60,7 @@ public class MainMenuState extends BasicGameState {
 		Entity new_Game_Entity = new Entity(new_Game);
 
 		// Setze Position und Bildkomponente
-		new_Game_Entity.setPosition(new Vector2f(400, 395));
+		new_Game_Entity.setPosition(new Vector2f(400, 370));
 		new_Game_Entity.setScale(0.98f);
 		new_Game_Entity.addComponent(new ImageRenderComponent(new Image(
 				"/res/pictures/menu/symbolmenu.jpg")));
@@ -80,7 +80,7 @@ public class MainMenuState extends BasicGameState {
 		Entity highscore_Entity = new Entity("Highscore");
 		
 		//Setze Position und Bildkomponente
-		highscore_Entity.setPosition(new Vector2f(400, start_Position + abstand));
+		highscore_Entity.setPosition(new Vector2f(400, 370 + abstand));
 		highscore_Entity.setScale(0.98f);
 		highscore_Entity.addComponent(new ImageRenderComponent(new Image ("/res/pictures/menu/symbolmenu.jpg")));
 		
@@ -99,7 +99,7 @@ public class MainMenuState extends BasicGameState {
 		
 
 		// Setze Position und Bildkomponente
-		quit_Entity.setPosition(new Vector2f(400, start_Position + 2* abstand));
+		quit_Entity.setPosition(new Vector2f(400, 370 + abstand *2));
 		quit_Entity.setScale(0.98f);
 		quit_Entity.addComponent(new ImageRenderComponent(new Image(
 				"/res/pictures/menu/symbolmenu.jpg")));
