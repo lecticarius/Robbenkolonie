@@ -3,3 +3,4 @@ bin
 *.zip
 .classpath
 .DS_Store
+.settings
