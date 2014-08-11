@@ -11,6 +11,9 @@ public class LibraryFileReader {
 	private String filename = null;
 	private ArrayList<char[]> data = null;
 
+	public LibraryFileReader() {
+		this.data = new ArrayList<char[]>();
+	}
 	
 	public LibraryFileReader(String filename) {
 		this.filename = filename;
