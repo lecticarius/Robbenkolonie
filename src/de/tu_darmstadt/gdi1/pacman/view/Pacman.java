@@ -14,6 +14,7 @@ public class Pacman extends StateBasedGame
 	// Jeder State wird durch einen Integer-Wert gekennzeichnet
     public static final int MAINMENU_STATE = 0;
     public static final int GAMEPLAY_STATE = 1;
+    public static final int HIGHSCORE_STATE = 2;
 	
 	public Pacman() throws SlickException
 	{
@@ -29,10 +30,12 @@ public class Pacman extends StateBasedGame
 		// (der zuerst hinzugefuegte State wird als erster State gestartet)
 		addState(new MainMenuState(MAINMENU_STATE));
         addState(new GameplayState(GAMEPLAY_STATE));
+        addState(new HighscoreState(HIGHSCORE_STATE));
         
         // Fuege dem StateBasedEntityManager die States hinzu
         StateBasedEntityManager.getInstance().addState(MAINMENU_STATE);
         StateBasedEntityManager.getInstance().addState(GAMEPLAY_STATE);
+        StateBasedEntityManager.getInstance().addState(HIGHSCORE_STATE);
 		
 	}
 }
