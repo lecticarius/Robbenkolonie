@@ -85,6 +85,16 @@ public class GameplayState extends BasicGameState {
 		playerImg = new Image("/res/pictures/menu/Pacman.jpg");
 		enemyImg1 = new Image("/res/pictures/theme1/entities/G1.png");
 
+		// Durch drücken einer Taste soll in den Highscore gewechselt werden,
+		// Dies dient vorerst als Platzhalter 
+		
+		Entity h_Listener = new Entity("H_Listener");
+
+		KeyPressedEvent h_pressed = new KeyPressedEvent(Input.KEY_H);
+		h_pressed.addAction(new ChangeStateAction(Pacman.HIGHSCORE_STATE));
+
+		h_Listener.addComponent(h_pressed);
+		entityManager.addEntity(stateID, h_Listener);
 	}
 
 	/**

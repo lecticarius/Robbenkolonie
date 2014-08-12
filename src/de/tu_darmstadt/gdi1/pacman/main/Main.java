@@ -19,7 +19,7 @@ public class Main {
 		AppGameContainer app = new AppGameContainer(game);
 
 		// konfiguration festlegen
-		LibraryFileReader reader = new LibraryFileReader("res\\levels\\Minimal.txt");
+		LibraryFileReader reader = new LibraryFileReader("res/levels/Minimal.txt");
 		char[][] result_map = reader.get_map();		
 		
 		// konfiguration festlegen, falls Vollbild benötigt ->
